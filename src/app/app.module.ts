@@ -1,11 +1,15 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent }  from './app.component';
+import { ProfileComponent } from './components/profile.component';
+import { GithubService } from './services/github.service';
+import { HttpModule} from '@angular/http';
 
 @NgModule({
-  imports:      [ BrowserModule ],
-  declarations: [ AppComponent ],
+  imports:      [ BrowserModule, HttpModule, FormsModule, ReactiveFormsModule ],
+  declarations: [ AppComponent, ProfileComponent ],
+  providers:	[  GithubService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

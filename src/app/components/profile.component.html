@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col">
+    <form>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" id="txtSearchUser" name="txtSearchUser" [(ngModel)]="username" (keyup)="searchUser()" aria-describedby="Search" placeholder="Enter a github username....">
+        <small id="Search" class="form-text text-muted">Enter a github username.</small>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="row" *ngIf="user">
+  <div class="col">
+    <div class="card border-dark mb-3">
+      <div class="card-header">{{user.name}}</div>
+      <div class="card-body text-dark">
+        <div class="row myRow">
+          <div class="col-md-4">
+            <img src="{{user.avatar_url}}" class="profile-img img-thumbnail">
+            <a href="{{user.html_url}}" target="_blank" class="btn btn-default btn-block">Ver Perfil</a>
+          </div>
+          <div class="col-md-8">
+            <div class="stats mb-2">
+              <span class="badge badge-primary">{{user.public_repos}} Public repos</span>
+              <span class="badge badge-success">{{user.public_gists}} Public Gists</span>
+              <span class="badge badge-info">{{user.followers}} Followers</span>
+              <span class="badge badge-secondary">{{user.following}} Following</span>
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item"><strong>Username: </strong>{{user.login}}</li>
+              <li class="list-group-item"><strong>Location: </strong>{{user.location}}</li>
+              <li class="list-group-item"><strong>Email: </strong>{{user.email}}</li>
+              <li class="list-group-item"><strong>Blog: </strong>{{user.blog}}</li>
+              <li class="list-group-item"><strong>Member Since: </strong> {{user.created_at}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card border-dark mb-3">
+      <div class="card-header">Repos</div>
+      <div *ngFor="let repo of repos" class="card-body text-dark">
+        <div class="row">
+          <div class="col-md-9">
+            <h4><a href="{{repo.url}}" target="_blank" class="">{{repo.name}}</a></h4>
+            <p>{{repo.description}}</p>
+          </div>
+          <div class="col-md-3">
+            <span class="badge badge-primary">{{repo.watchers}} Watchers</span>
+            <span class="badge badge-success">{{repo.forks}} Forks</span>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
